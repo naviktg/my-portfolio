@@ -26,32 +26,85 @@ const skills = [
   {
     title: 'Cloud & AWS',
     icon: Cloud,
-    items: ['AWS', 'EC2', 'S3', 'IAM', 'VPC', 'RDS'],
+    items: [
+      'AWS',
+      'EC2',
+      'VPC',
+      'S3',
+      'IAM',
+      'RDS',
+      'ECR',
+      'EKS',
+      'Internet Gateway',
+      'Route Tables',
+      'Public Subnets',
+      'Elastic IP',
+    ],
   },
   {
-    title: 'CI/CD & Version Control',
+    title: 'DevOps & CI/CD',
     icon: Workflow,
-    items: ['Jenkins', 'Git', 'GitHub', 'CI/CD', 'GitHub Webhooks'],
+    items: [
+      'DevOps',
+      'CI/CD',
+      'Jenkins',
+      'Git',
+      'GitHub',
+      'GitHub Webhooks',
+      'Pipeline Automation',
+    ],
   },
   {
     title: 'Containers & Orchestration',
     icon: Container,
-    items: ['Docker', 'Kubernetes', 'Amazon EKS', 'Amazon ECR'],
+    items: [
+      'Docker',
+      'Dockerfile',
+      'Multi-Stage Docker Builds',
+      'Containerization',
+      'Kubernetes',
+      'Amazon EKS',
+    ],
   },
   {
     title: 'Infrastructure as Code',
     icon: Layers,
-    items: ['Terraform', 'Remote State', 'S3 Backend'],
+    items: [
+      'Terraform',
+      'Infrastructure as Code',
+      'Terraform Variables & Outputs',
+      'Remote State',
+      'Amazon S3 Backend',
+      'State Locking',
+    ],
   },
   {
-    title: 'Monitoring & Automation',
+    title: 'Monitoring & Observability',
     icon: Activity,
-    items: ['Prometheus', 'Grafana', 'Ansible'],
+    items: [
+      'Prometheus',
+      'Grafana',
+      'Container Monitoring',
+      'Application Health Checks',
+      'Log Inspection',
+    ],
   },
   {
-    title: 'Operating Systems & Build',
+    title: 'Operating Systems & Development',
     icon: Terminal,
-    items: ['Linux', 'Ubuntu', 'Bash', 'Maven', 'Java'],
+    items: [
+      'Linux',
+      'Ubuntu',
+      'Bash',
+      'Java',
+      'Maven',
+      'JavaScript',
+      'React',
+      'HTML',
+      'CSS',
+      'Tailwind CSS',
+      'GSAP',
+    ],
   },
 ]
 
@@ -108,41 +161,28 @@ const projects = [
   },
 ]
 
-
 const journey = [
   {
-    year: '2018 – 2021',
-    title: 'Bachelor of Commerce (B.Com – BPS)',
-    place: 'Sri Ramakrishna Institute of Technology',
-    description: 'Completed undergraduate education with a strong foundation in commerce and business studies.',
-    icon: GraduationCap,
-  },
-  {
-    year: '2021 – 2023',
-    title: 'Master of Business Administration (MBA)',
-    place: 'Karpagam Academy of Higher Education',
+    year: '2023',
+    title: 'Master of Business Administration',
+    place: 'MBA',
     description: 'Completed postgraduate management education.',
     icon: GraduationCap,
   },
   {
-    year: '2024 – 2025',
-    title: 'Diploma in Cooperative Management',
-    place: 'One-Year Diploma Course',
-    description: 'Completed a one-year diploma course and prepared for banking examinations.',
-    icon: GraduationCap,
-  },
-  {
-    year: 'OCT 2026',
-    title: 'DevOps & Cloud Computing Program',
-    place: 'HCL GUVI | COMPLETED',
-    description: 'Successfully completed the four-month DevOps program with practical learning in AWS, Linux, Docker, Jenkins, Terraform and cloud technologies.',
+    year: 'TRAINING',
+    title: 'DevOps & Cloud Learning',
+    place: 'GUVI / HCL GUVI',
+    description:
+      'Developed practical skills in AWS, Linux, Docker, Jenkins, Terraform and cloud technologies.',
     icon: Terminal,
   },
   {
     year: 'HANDS-ON',
     title: 'Practical Project Development',
     place: 'Five Technical Projects',
-    description: 'Applied DevOps concepts through AWS infrastructure, CI/CD automation, Docker, Terraform and Kubernetes projects.',
+    description:
+      'Applied DevOps concepts through cloud infrastructure, CI/CD, containers and Kubernetes projects.',
     icon: Code2,
   },
 ]
@@ -171,11 +211,16 @@ function App() {
         ease: 'power3.out',
       })
 
-      // Scroll motion is applied to the photo wrapper, not the image card.
-      // This keeps the portrait's 3D tilt separate from its scroll position.
-      gsap.to('.hero-photo', {
-        y: 34,
-        scale: 0.96,
+      // 3D portrait scroll animation
+      // The portrait gently tilts and moves back as the visitor scrolls.
+      gsap.to('.hero-photo-card', {
+        rotateX: -8,
+        rotateY: 10,
+        rotateZ: -1,
+        y: 75,
+        scale: 0.90,
+        transformPerspective: 1200,
+        transformOrigin: 'center center',
         ease: 'none',
         scrollTrigger: {
           trigger: '#home',
@@ -183,6 +228,16 @@ function App() {
           end: 'bottom top',
           scrub: 1,
         },
+      })
+
+      // Subtle floating motion for the portrait card
+      gsap.to('.hero-photo-card img', {
+        scale: 1.035,
+        duration: 3.5,
+        repeat: -1,
+        yoyo: true,
+        ease: 'sine.inOut',
+        transformOrigin: 'center center',
       })
 
       // Scroll reveal animation
@@ -200,6 +255,13 @@ function App() {
         })
       })
 
+      // Slow orbit animation
+      gsap.to('.hero-orbit', {
+        rotate: 360,
+        duration: 35,
+        repeat: -1,
+        ease: 'none',
+      })
     }, mainRef)
 
     return () => ctx.revert()
@@ -382,55 +444,39 @@ function App() {
           </div>
         </div>
 
-        {/* RIGHT PROFILE PHOTO — clean interactive 3D portrait */}
+        {/* RIGHT PROFILE PHOTO */}
 
         <div
-          className="hero-photo relative mx-auto w-full max-w-[440px]"
-          style={{ perspective: '1400px' }}
+          className="hero-photo relative mx-auto w-full max-w-[460px]"
+          style={{ perspective: '1200px', transformStyle: 'preserve-3d' }}
         >
-          <div className="pointer-events-none absolute -inset-10 rounded-full bg-blue-500/20 blur-[100px]" />
-          <div className="pointer-events-none absolute -inset-5 rounded-[48%] border border-dashed border-blue-400/25" />
+          <div className="hero-orbit absolute -inset-5 rounded-[48%] border border-dashed border-blue-400/30" />
+
+          <div className="absolute -inset-8 rounded-full bg-blue-500/20 blur-[90px]" />
 
           <div
-            className="hero-photo-card relative overflow-hidden rounded-[48%_48%_22px_22px] border border-blue-300/25 bg-[#0D1728] shadow-[0_35px_100px_rgba(0,0,0,0.5)] will-change-transform"
-            style={{
-              transformStyle: 'preserve-3d',
-              transform: 'rotateX(0deg) rotateY(0deg)',
-            }}
-            onMouseMove={(event) => {
-              const rect = event.currentTarget.getBoundingClientRect()
-              const x = (event.clientX - rect.left) / rect.width - 0.5
-              const y = (event.clientY - rect.top) / rect.height - 0.5
-              gsap.to(event.currentTarget, {
-                rotateY: x * 14,
-                rotateX: y * -12,
-                duration: 0.45,
-                ease: 'power2.out',
-                transformPerspective: 1400,
-                overwrite: 'auto',
-              })
-            }}
-            onMouseLeave={(event) => {
-              gsap.to(event.currentTarget, {
-                rotateX: 0,
-                rotateY: 0,
-                duration: 0.8,
-                ease: 'elastic.out(1, 0.55)',
-                overwrite: 'auto',
-              })
-            }}
+            className="hero-photo-card relative overflow-hidden rounded-[48%_48%_14px_14px] border border-blue-400/25 bg-[#0D1728] shadow-2xl shadow-blue-950/50 will-change-transform"
+            style={{ transformStyle: 'preserve-3d', backfaceVisibility: 'hidden' }}
           >
             <img
               src="/images/profile.png"
               alt="Navikaran N - DevOps Engineer"
-              className="block aspect-[4/5] w-full object-cover object-top"
-              draggable="false"
+              className="aspect-[4/5] w-full object-cover object-top [transform:translateZ(1px)]"
             />
-            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[#080F1D]/35 to-transparent" />
+
+            <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-[#080F1D] via-[#080F1D]/40 to-transparent" />
+
+            <div className="absolute bottom-7 left-7">
+              <p className="text-2xl font-bold tracking-wide text-white">
+                NAVIKARAN N.
+              </p>
+
+              <p className="mt-2 text-xs tracking-[0.2em] text-blue-300">
+                DEVOPS ENGINEER | AWS CLOUD
+              </p>
+            </div>
           </div>
-          <p className="mt-5 text-center text-xs tracking-[0.24em] text-blue-300/80">
-            NAVIKARAN N. <span className="text-slate-500">/ DEVOPS & CLOUD</span>
-          </p>
+
         </div>
       </section>
 
