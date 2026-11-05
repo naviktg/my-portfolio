@@ -108,28 +108,41 @@ const projects = [
   },
 ]
 
+
 const journey = [
   {
-    year: '2023',
-    title: 'Master of Business Administration',
-    place: 'MBA',
+    year: '2018 – 2021',
+    title: 'Bachelor of Commerce (B.Com – BPS)',
+    place: 'Sri Ramakrishna Institute of Technology',
+    description: 'Completed undergraduate education with a strong foundation in commerce and business studies.',
+    icon: GraduationCap,
+  },
+  {
+    year: '2021 – 2023',
+    title: 'Master of Business Administration (MBA)',
+    place: 'Karpagam Academy of Higher Education',
     description: 'Completed postgraduate management education.',
     icon: GraduationCap,
   },
   {
-    year: 'TRAINING',
-    title: 'DevOps & Cloud Learning',
-    place: 'GUVI / HCL GUVI',
-    description:
-      'Developed practical skills in AWS, Linux, Docker, Jenkins, Terraform and cloud technologies.',
+    year: '2024 – 2025',
+    title: 'Diploma in Cooperative Management',
+    place: 'One-Year Diploma Course',
+    description: 'Completed a one-year diploma course and prepared for banking examinations.',
+    icon: GraduationCap,
+  },
+  {
+    year: 'OCT 2026',
+    title: 'DevOps & Cloud Computing Program',
+    place: 'HCL GUVI | COMPLETED',
+    description: 'Successfully completed the four-month DevOps program with practical learning in AWS, Linux, Docker, Jenkins, Terraform and cloud technologies.',
     icon: Terminal,
   },
   {
     year: 'HANDS-ON',
     title: 'Practical Project Development',
     place: 'Five Technical Projects',
-    description:
-      'Applied DevOps concepts through cloud infrastructure, CI/CD, containers and Kubernetes projects.',
+    description: 'Applied DevOps concepts through AWS infrastructure, CI/CD automation, Docker, Terraform and Kubernetes projects.',
     icon: Code2,
   },
 ]
